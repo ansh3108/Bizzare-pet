@@ -5,7 +5,7 @@ body
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f0f0f0;
+    background: linear-gradient(to top, #87CEEB, #f0f0f0);
     font-family: 'Arial', sans-serif;
 }
 
@@ -14,18 +14,14 @@ body
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 300px;
-    height: 300px;
-    background-color: #fff;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, white, #ddd);
     border: 2px solid #000;
-    border-radius: 10px;
+    border-radius: 50%;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.5s;
-}
-
-.container:hover 
-{
-    transform: scale(1.05);
+    position: relative;
+    overflow: hidden;
 }
 
 #creature 
@@ -35,6 +31,40 @@ body
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 4rem;
-    transition: opacity 0.5s;
+    font-size: 6rem;
+    transition: opacity 0.5s, transform 1s;
+}
+
+.creature-animation 
+{
+    animation: float 5s infinite ease-in-out;
+}
+
+
+@keyframes float 
+{
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+#creature.dragon 
+{
+    animation: float 5s infinite ease-in-out, rotate 10s infinite linear;
+}
+
+#creature.octopus 
+{
+    animation: float 5s infinite ease-in-out, pulsate 5s infinite linear;
+}
+
+@keyframes rotate
+ {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes pulsate
+ {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
 }
